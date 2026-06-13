@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>購票須知 — 奶油版</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #ede5d8;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .card {
+    background: #fdf8f0;
+    width: 100%;
+    max-width: 620px;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(120,80,30,0.13), 0 2px 10px rgba(0,0,0,0.05);
+    position: relative;
+  }
+
+  #wm {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .header, .body, .footer { position: relative; z-index: 1; }
+
+  /* Header — 純焦糖奶油 */
+  .header {
+    background: #c8823a;
+    padding: 38px 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(255,220,150,0.25) 0%, transparent 70%);
+  }
+  .header::after {
+    content: '🧳';
+    position: absolute;
+    right: 28px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 90px;
+    opacity: 0.13;
+    pointer-events: none;
+  }
+  .header-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; position:relative; }
+  .header-badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.38);
+    color: #fff8ee;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 2.5px; padding: 4px 13px; border-radius: 20px;
+  }
+  .brand-tag { color: rgba(255,248,238,0.65); font-size: 10.5px; font-weight:500; letter-spacing:0.5px; }
+  .header h1 {
+    color: #fff8ee;
+    font-size: 34px; font-weight: 900;
+    letter-spacing: 5px; line-height: 1.2;
+    text-shadow: 0 2px 16px rgba(100,50,0,0.25);
+    position: relative;
+  }
+  .header h1 em { color: #ffedc0; font-style: normal; }
+  .header-sub {
+    margin-top: 10px; position: relative;
+    color: rgba(255,248,238,0.6);
+    font-size: 11.5px; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .header-sub::before { content:''; width:20px; height:1.5px; background:rgba(255,255,255,0.4); display:inline-block; }
+
+  /* Body */
+  .body { padding: 32px 40px; }
+  .section { margin-bottom: 28px; }
+  .section-title {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px; padding-bottom: 10px;
+    border-bottom: 2px solid #e8d8c0;
+  }
+  .section-icon {
+    width: 34px; height: 34px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .si-a { background: #fce8cc; }
+  .si-b { background: #f5e0c8; }
+  .si-c { background: #fdebd8; }
+  .si-d { background: #f0dcc8; }
+  .section-title h2 { font-size: 15px; font-weight: 800; color: #7a4a18; letter-spacing: 1.5px; }
+
+  /* Ticket Cards */
+  .ticket-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:12px; }
+  .ticket-card { border-radius:16px; padding:18px; }
+  .ticket-card.promo    { background:#fff8ee; border:1.5px solid #e8c898; }
+  .ticket-card.original { background:#fdf2e4; border:1.5px solid #d4a870; }
+  .ticket-type-label { font-size:13.5px; font-weight:800; display:flex; align-items:center; gap:7px; margin-bottom:12px; }
+  .ticket-card.promo .ticket-type-label    { color: #a05818; }
+  .ticket-card.original .ticket-type-label { color: #7a3a10; }
+  .badge { font-size:9.5px; font-weight:700; padding:2px 8px; border-radius:10px; }
+  .badge-a { background:#c87830; color:#fff; }
+  .badge-b { background:#8a4818; color:#fff; }
+  .pros-cons { font-size:12px; line-height:2; color:#6a4820; margin-bottom:10px; }
+  .pro::before { content:'✓ '; color:#a07030; font-weight:700; }
+  .con::before { content:'✗ '; color:#c05030; font-weight:700; }
+  .who-section { border-top:1.5px dashed #d8b888; padding-top:10px; }
+  .who-label { font-size:9.5px; font-weight:800; letter-spacing:2px; margin-bottom:5px; color:#9a6030; }
+  .who-item { font-size:11.5px; color:#6a4820; line-height:1.9; display:flex; align-items:center; gap:5px; }
+  .who-item::before { content:'›'; font-weight:700; opacity:0.5; }
+
+  /* Alert */
+  .alert-box { border-radius:13px; padding:13px 16px; font-size:12.5px; line-height:1.75; margin-top:12px; display:flex; gap:10px; align-items:flex-start; }
+  .alert-cream { background:#fef6e6; border:1.5px solid #ddb870; border-left:4px solid #c8903a; color:#7a4a10; }
+  .alert-cream strong { color:#a06018; }
+  .alert-icon { font-size:15px; margin-top:1px; flex-shrink:0; }
+
+  /* Rules */
+  .rule-list { list-style:none; }
+  .rule-list li { display:flex; gap:12px; font-size:13px; color:#5a3818; line-height:1.75; padding:10px 0; border-bottom:1px solid #e8d8c0; align-items:flex-start; }
+  .rule-list li:last-child { border-bottom:none; padding-bottom:0; }
+  .rule-list li strong { color:#3a2008; }
+  .rule-num { min-width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; margin-top:1px; }
+  .rn-main { background:#c87830; color:#fff; }
+  .rn-warn { background:#c84830; color:#fff; }
+
+  /* Info */
+  .info-list { display:flex; flex-direction:column; gap:9px; }
+  .info-item { background:#fef0dc; border-radius:12px; padding:13px 16px; display:flex; gap:11px; align-items:flex-start; font-size:12.5px; color:#5a3818; line-height:1.65; border-left:3px solid #d4a060; }
+  .info-item strong { color:#7a4018; }
+  .info-dot { width:7px; height:7px; background:#c87830; border-radius:50%; margin-top:5px; flex-shrink:0; }
+
+  /* No-sell */
+  .no-sell-row { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:12px; }
+  .no-sell-tag { background:#fff0e8; border:1.5px solid #e8b090; color:#a03020; font-size:12.5px; font-weight:700; padding:6px 14px; border-radius:20px; display:flex; align-items:center; gap:5px; }
+  .no-sell-tag::before { content:'🚫'; font-size:12px; }
+
+  /* Divider */
+  .divider { height:1px; background:linear-gradient(to right,transparent,#d8c0a0,transparent); margin:4px 0 26px; }
+
+  /* Signature */
+  .sign-section {
+    margin: 0 40px 32px;
+    position: relative; z-index: 1;
+    background: #fef6e6;
+    border: 1.5px solid #ddb870;
+    border-radius: 16px;
+    padding: 20px 24px;
+  }
+  .sign-title {
+    font-size: 13px; font-weight: 800;
+    color: #7a4a18; letter-spacing: 1px;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sign-title::before { content:'✍️'; font-size:15px; }
+  .sign-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .sign-field { display: flex; flex-direction: column; gap: 6px; }
+  .sign-label { font-size: 11px; font-weight: 700; color: #9a6030; letter-spacing: 1px; }
+  .sign-line {
+    height: 36px;
+    border: none;
+    border-bottom: 1.5px solid #c8a070;
+    background: transparent;
+    font-size: 13px; color: #5a3818;
+    font-family: 'Noto Sans TC', sans-serif;
+    outline: none;
+    padding: 0 4px;
+    width: 100%;
+  }
+  .sign-line:focus { border-bottom-color: #c87830; }
+  .sign-agree {
+    margin-bottom: 14px;
+    font-size: 12.5px; color: #7a4a18;
+    line-height: 1.6;
+    padding: 10px 12px;
+    background: rgba(200,130,60,0.06);
+    border-radius: 8px;
+    border-left: 3px solid #c87830;
+  }
+
+  /* Signature canvas */
+  .sign-canvas-wrap {
+    position: relative;
+    border-bottom: 1.5px solid #c8a070;
+    height: 140px;
+    cursor: crosshair;
+  }
+  #sigCanvas {
+    width: 100%;
+    height: 140px;
+    display: block;
+    touch-action: none;
+  }
+  .sign-clear {
+    position: absolute;
+    top: 4px; right: 4px;
+    background: rgba(200,130,60,0.12);
+    border: 1px solid #d4a060;
+    color: #9a6030;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 8px;
+    cursor: pointer; letter-spacing: 0.5px;
+  }
+  .sign-clear:hover { background: rgba(200,130,60,0.22); }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px;
+    background: #c87830;
+    color: #fff8ee;
+    font-size: 15px; font-weight: 800;
+    letter-spacing: 2px;
+    border: none; border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Noto Sans TC', sans-serif;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover { background: #a06020; }
+
+  /* Footer */
+  .footer { background:#c87830; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; }
+  .footer-brand { color:#fff8ee; font-size:13px; font-weight:700; letter-spacing:1px; }
+  .footer-note  { color:rgba(255,248,238,0.55); font-size:10px; text-align:right; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <canvas id="wm"></canvas>
+
+  <div class="header">
+    <div class="header-top">
+      <div class="header-badge">✈ &nbsp;TICKET GUIDE</div>
+      <div class="brand-tag">荷包輕盈旅行研究室 🧳</div>
+    </div>
+    <h1>購票須知<br><em>&amp; 說明</em></h1>
+    <div class="header-sub">購票前請詳細閱讀以下規則，謝謝配合</div>
+  </div>
+
+  <div class="body">
+    <div class="section">
+      <div class="section-title"><div class="section-icon si-a">🎫</div><h2>票種說明</h2></div>
+      <div class="ticket-grid">
+        <div class="ticket-card promo">
+          <div class="ticket-type-label">促銷票 <span class="badge badge-a">彈性</span></div>
+          <div class="pros-cons">
+            <div class="pro">便宜、可彈性換日</div>
+            <div class="con">航班不保證</div>
+            <div class="con">滿位需更換航班</div>
+          </div>
+          <div class="who-section">
+            <div class="who-label">✦ 適合對象</div>
+            <div class="who-item">行程彈性、不趕時間</div>
+            <div class="who-item">預算有限、想省錢</div>
+            <div class="who-item">不需報帳 / 請假</div>
+          </div>
+        </div>
+        <div class="ticket-card original">
+          <div class="ticket-type-label">原價票 <span class="badge badge-b">保障</span></div>
+          <div class="pros-cons">
+            <div class="pro">機位保證、出票快</div>
+            <div class="pro">官網 85–9 折優惠</div>
+            <div class="con">不可換日、費較高</div>
+          </div>
+          <div class="who-section">
+            <div class="who-label">✦ 適合對象</div>
+            <div class="who-item">行程固定、不能異動</div>
+            <div class="who-item">有接送 / 飯店需提前訂</div>
+            <div class="who-item">需要確定班機者</div>
+          </div>
+        </div>
+      </div>
+      <div class="alert-box alert-cream"><div class="alert-icon">⚠️</div><div><strong>促銷票開票時間：</strong>出發前約 2 週，熱門 / 連假時段可能縮短至出發前 3–5 天。建議行程保持彈性，拿到電子機票後再安排接送與保險。</div></div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title"><div class="section-icon si-b">📋</div><h2>購票規則</h2></div>
+      <ul class="rule-list">
+        <li><div class="rule-num rn-main">1</div><div>確認購買後（LINE 上回覆視同購買）即保留，<strong>不可取消，請立即匯款</strong>。每檔促銷皆為獨立活動，已是促銷價請勿議價。</div></li>
+        <li><div class="rule-num rn-main">2</div><div>機票於<strong>出發前兩週開票</strong>（電子機票）。開票前可更改時間、地點、人數；開票後不得修改，如需異動依航空公司規定收費。</div></li>
+        <li><div class="rule-num rn-main">3</div><div>出發日期<strong>須至少提前 3 個月告知</strong>，不接受臨時通知。每月將更新不收單日期，請依照公告安排行程。</div></li>
+        <li><div class="rule-num rn-main">4</div><div><strong>無法提供統編 / 購票證明</strong>，機票以電子機票電子檔為主。需報帳或軍警身份者，請自行斟酌是否購買。</div></li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title"><div class="section-icon si-c">📎</div><h2>購票所需資訊</h2></div>
+      <div class="info-list">
+        <div class="info-item"><div class="info-dot"></div><div>有效<strong>護照照片</strong>（效期需 6 個月以上，務必提供照片檔，非文字檔）</div></div>
+        <div class="info-item"><div class="info-dot"></div><div>前往 / 轉機<strong>中國或香港</strong>者，需額外提供<strong>台胞證 / 港簽</strong></div></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title"><div class="section-icon si-c">⚠️</div><h2>特別注意</h2></div>
+      <ul class="rule-list">
+        <li><div class="rule-num rn-warn">!</div><div>機票可能有<strong>超賣、取消、時間異動、更換機型</strong>等突發狀況，官網自購也有同樣風險。與我們訂的差別在於：<strong>有人協助與航空公司溝通、維護您的權益</strong>。</div></li>
+        <li><div class="rule-num rn-warn">!</div><div>促銷票如遇班機更換，我們將協助安排合適航班，<strong>請勿為難工作人員</strong>。</div></li>
+        <li><div class="rule-num rn-warn">!</div><div>喊完即視為保留，取消則<strong>取消日後購買促銷票資格</strong>，請確認後再回覆。</div></li>
+        <li><div class="rule-num rn-warn">!</div><div>特殊情況（生病、緊急事件等）請主動告知，將依事發狀況評估是否免費取消或退票。</div></li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+
+    <div class="section" style="margin-bottom:0">
+      <div class="section-title"><div class="section-icon si-d">🚫</div><h2>不販售對象</h2></div>
+      <div class="no-sell-row">
+        <div class="no-sell-tag">旅行社同行</div>
+        <div class="no-sell-tag">軍警人員</div>
+        <div class="no-sell-tag">情緒不穩定者</div>
+      </div>
+      <div class="alert-box alert-cream"><div class="alert-icon">⚠️</div><div>軍警人員出境需<strong>提早申請電子機票</strong>，基於二週開票限制無法配合處理。情緒不穩定者無法接受任何意外變動，故一律不受理。</div></div>
+    </div>
+  </div>
+
+  <!-- 簽名區 -->
+  <div class="sign-section">
+    <div class="sign-title">本人同意並確認已詳閱以上所有購票規則</div>
+    <div class="sign-agree">
+      本人確認已閱讀並完全同意上述所有購票規則，包含促銷票特性、不可取消條款、開票時間限制及不販售對象說明。
+    </div>
+    <div class="sign-row">
+      <div class="sign-field">
+        <div class="sign-label">簽名 SIGNATURE</div>
+        <div class="sign-canvas-wrap">
+          <canvas id="sigCanvas"></canvas>
+          <button class="sign-clear" onclick="clearSig()">清除</button>
+        </div>
+      </div>
+      <div class="sign-field">
+        <div class="sign-label">日期 DATE</div>
+        <input class="sign-line" id="signDate" type="text" placeholder="yyyy/mm/dd">
+      </div>
+    </div>
+    <button class="submit-btn" onclick="submitForm()">✅ 確認送出</button>
+    <div id="submitMsg" style="display:none; margin-top:14px; text-align:center; font-size:13px; color:#7a4a18; font-weight:700;"></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">荷包輕盈旅行研究室 🧳</div>
+    <div class="footer-note">購票即視為同意以上規則<br>請詳閱後再下單，謝謝配合</div>
+  </div>
+</div>
+
+<script>
+function drawWatermark() {
+  const card = document.getElementById('card');
+  const canvas = document.getElementById('wm');
+  const w = card.offsetWidth;
+  const h = card.offsetHeight;
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, w, h);
+
+  const sections = 6;
+  const blockH = h / sections;
+  const text = '荷包輕盈旅行研究室 🧳';
+  ctx.font = '900 22px "Noto Sans TC", sans-serif';
+  ctx.fillStyle = 'rgba(160,100,40,0.1)';
+  ctx.textAlign = 'center';
+
+  for (let i = 0; i < sections; i++) {
+    const cx = w / 2;
+    const cy = blockH * i + blockH / 2;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(-20 * Math.PI / 180);
+    ctx.fillText(text, 0, 0);
+    ctx.restore();
+  }
+}
+// 手寫簽名
+const sigCanvas = document.getElementById('sigCanvas');
+const sigCtx = sigCanvas.getContext('2d');
+let drawing = false;
+
+function resizeSig() {
+  const wrap = sigCanvas.parentElement;
+  sigCanvas.width = wrap.offsetWidth;
+  sigCanvas.height = 140;
+  sigCtx.strokeStyle = '#5a3818';
+  sigCtx.lineWidth = 2.5;
+  sigCtx.lineCap = 'round';
+  sigCtx.lineJoin = 'round';
+}
+
+function getPos(e) {
+  const r = sigCanvas.getBoundingClientRect();
+  const src = e.touches ? e.touches[0] : e;
+  return { x: src.clientX - r.left, y: src.clientY - r.top };
+}
+
+sigCanvas.addEventListener('mousedown',  e => { drawing = true; sigCtx.beginPath(); const p = getPos(e); sigCtx.moveTo(p.x, p.y); });
+sigCanvas.addEventListener('mousemove',  e => { if (!drawing) return; const p = getPos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); });
+sigCanvas.addEventListener('mouseup',    () => drawing = false);
+sigCanvas.addEventListener('mouseleave', () => drawing = false);
+sigCanvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; sigCtx.beginPath(); const p = getPos(e); sigCtx.moveTo(p.x, p.y); }, { passive: false });
+sigCanvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); }, { passive: false });
+sigCanvas.addEventListener('touchend',   () => drawing = false);
+
+function clearSig() { sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height); }
+
+async function submitForm() {
+  const date = document.getElementById('signDate').value;
+  const sigCanvas = document.getElementById('sigCanvas');
+  const isEmpty = !sigCanvas.getContext('2d')
+    .getImageData(0, 0, sigCanvas.width, sigCanvas.height)
+    .data.some(x => x !== 0);
+
+  if (!date) { alert('請填寫日期！'); return; }
+  if (isEmpty) { alert('請先簽名！'); return; }
+
+  const TOKEN = 'tkzqlx+erMpQwg21AiUOL+fZvJtXHf/pjV0NqvHuwi/dZ4ws0hL2k7CJdVWE9CU9q+BVyWFck+nEHE9EvOXunXhp2GntBOQ9ukf8iE8UnhzLfN8nM78IeifLtTP34iwmP/RXoFxEcs5+GR+7XrW0GwdB04t89/1O/w1cDnyilFU=';
+  const USER_ID = 'U220888fc8aae5781571b9c1f9e2a18ac';
+
+  const msg = `✍️ 購票規則同意通知\n━━━━━━━━━━━━━\n📅 日期：${date}\n✅ 已手寫簽名確認\n本人已閱讀並同意所有購票規則`;
+
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = '傳送中...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://api.line.me/v2/bot/message/push', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${TOKEN}`
+      },
+      body: JSON.stringify({
+        to: USER_ID,
+        messages: [{ type: 'text', text: msg }]
+      })
+    });
+
+    const msgEl = document.getElementById('submitMsg');
+    msgEl.style.display = 'block';
+    if (res.ok) {
+      msgEl.textContent = '✅ 已成功送出，感謝您的確認！';
+      msgEl.style.color = '#5a8a30';
+      btn.textContent = '已送出 ✅';
+    } else {
+      const err = await res.json();
+      msgEl.textContent = `⚠️ 送出失敗：${err.message}`;
+      msgEl.style.color = '#c84030';
+      btn.textContent = '✅ 確認送出';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    const msgEl = document.getElementById('submitMsg');
+    msgEl.style.display = 'block';
+    msgEl.textContent = '⚠️ 網路錯誤，請稍後再試';
+    msgEl.style.color = '#c84030';
+    btn.textContent = '✅ 確認送出';
+    btn.disabled = false;
+  }
+}
+
+window.addEventListener('load', () => { drawWatermark(); resizeSig(); });
+window.addEventListener('resize', () => { drawWatermark(); resizeSig(); });
+</script>
+</body>
+</html>
