@@ -441,16 +441,10 @@ async function submitForm() {
   btn.disabled = true;
 
   try {
-    const res = await fetch('https://api.line.me/v2/bot/message/push', {
+    const res = await fetch('https://ticket-api-kohl.vercel.app/api/notify', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${TOKEN}`
-      },
-      body: JSON.stringify({
-        to: USER_ID,
-        messages: [{ type: 'text', text: msg }]
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date })
     });
 
     const msgEl = document.getElementById('submitMsg');
