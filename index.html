@@ -164,28 +164,9 @@
     margin-bottom: 16px;
     display: flex; align-items: center; gap: 8px;
   }
-  .sign-title::before { content:'✍️'; font-size:15px; }
-  .sign-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .sign-field { display: flex; flex-direction: column; gap: 6px; }
-  .sign-label { font-size: 11px; font-weight: 700; color: #9a6030; letter-spacing: 1px; }
-  .sign-line {
-    height: 36px;
-    border: none;
-    border-bottom: 1.5px solid #c8a070;
-    background: transparent;
-    font-size: 13px; color: #5a3818;
-    font-family: 'Noto Sans TC', sans-serif;
-    outline: none;
-    padding: 0 4px;
-    width: 100%;
-  }
-  .sign-line:focus { border-bottom-color: #c87830; }
+  .sign-title::before { content:'📋'; font-size:15px; }
   .sign-agree {
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     font-size: 12.5px; color: #7a4a18;
     line-height: 1.6;
     padding: 10px 12px;
@@ -193,39 +174,37 @@
     border-radius: 8px;
     border-left: 3px solid #c87830;
   }
-
-  /* Signature canvas */
-  .sign-canvas-wrap {
-    position: relative;
+  .sign-fields { display: flex; flex-direction: column; gap: 16px; margin-bottom: 18px; }
+  .sign-field { display: flex; flex-direction: column; gap: 6px; }
+  .sign-label { font-size: 11px; font-weight: 700; color: #9a6030; letter-spacing: 1px; }
+  .sign-input {
+    height: 42px;
+    border: none;
     border-bottom: 1.5px solid #c8a070;
-    height: 140px;
-    cursor: crosshair;
-  }
-  #sigCanvas {
+    background: transparent;
+    font-size: 14px; color: #5a3818;
+    font-family: 'Noto Sans TC', sans-serif;
+    outline: none;
+    padding: 0 4px;
     width: 100%;
-    height: 140px;
-    display: block;
-    touch-action: none;
   }
-  .sign-clear {
-    position: absolute;
-    top: 4px; right: 4px;
-    background: rgba(200,130,60,0.12);
-    border: 1px solid #d4a060;
-    color: #9a6030;
-    font-size: 10px; font-weight: 700;
-    padding: 2px 8px; border-radius: 8px;
-    cursor: pointer; letter-spacing: 0.5px;
+  .sign-input:focus { border-bottom-color: #c87830; }
+  .sign-input::placeholder { color: #c8a888; font-size: 13px; }
+  .checkbox-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 18px; cursor: pointer;
   }
-  .sign-clear:hover { background: rgba(200,130,60,0.22); }
-
+  .checkbox-row input[type="checkbox"] {
+    width: 20px; height: 20px;
+    margin-top: 1px; flex-shrink: 0;
+    accent-color: #c87830; cursor: pointer;
+  }
+  .checkbox-label { font-size: 13px; color: #7a4a18; line-height: 1.65; }
+  .checkbox-label strong { color: #5a3010; }
   .submit-btn {
-    display: block;
-    width: 100%;
-    margin-top: 18px;
+    display: block; width: 100%;
     padding: 14px;
-    background: #c87830;
-    color: #fff8ee;
+    background: #c87830; color: #fff8ee;
     font-size: 15px; font-weight: 800;
     letter-spacing: 2px;
     border: none; border-radius: 12px;
@@ -234,6 +213,7 @@
     transition: background 0.2s;
   }
   .submit-btn:hover { background: #a06020; }
+  .submit-btn:disabled { background: #d4b080; cursor: not-allowed; }
 
   /* Footer */
   .footer { background:#c87830; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; }
@@ -333,27 +313,32 @@
     </div>
   </div>
 
-  <!-- 簽名區 -->
+  <!-- 同意書區 -->
   <div class="sign-section">
-    <div class="sign-title">本人同意並確認已詳閱以上所有購票規則</div>
+    <div class="sign-title">購票同意書</div>
     <div class="sign-agree">
-      本人確認已閱讀並完全同意上述所有購票規則，包含促銷票特性、不可取消條款、開票時間限制及不販售對象說明。
+      請填寫以下資料，代表本人已詳細閱讀並完全同意上述所有購票規則，包含促銷票特性、不可取消條款、開票時間限制及不販售對象說明。
     </div>
-    <div class="sign-row">
+    <div class="sign-fields">
       <div class="sign-field">
-        <div class="sign-label">簽名 SIGNATURE</div>
-        <div class="sign-canvas-wrap">
-          <canvas id="sigCanvas"></canvas>
-          <button class="sign-clear" onclick="clearSig()">清除</button>
-        </div>
+        <div class="sign-label">姓名 NAME</div>
+        <input class="sign-input" id="signName" type="text" placeholder="請輸入真實姓名">
+      </div>
+      <div class="sign-field">
+        <div class="sign-label">手機號碼 PHONE</div>
+        <input class="sign-input" id="signPhone" type="tel" placeholder="09xxxxxxxx">
       </div>
       <div class="sign-field">
         <div class="sign-label">日期 DATE</div>
-        <input class="sign-line" id="signDate" type="text" placeholder="yyyy/mm/dd">
+        <input class="sign-input" id="signDate" type="text" placeholder="yyyy/mm/dd">
       </div>
     </div>
-    <button class="submit-btn" onclick="submitForm()">✅ 確認送出</button>
-    <div id="submitMsg" style="display:none; margin-top:14px; text-align:center; font-size:13px; color:#7a4a18; font-weight:700;"></div>
+    <label class="checkbox-row">
+      <input type="checkbox" id="agreeCheck">
+      <span class="checkbox-label">本人已詳細閱讀並完全同意以上所有<strong>購票規則與注意事項</strong>，並了解購票後不可取消及相關限制。</span>
+    </label>
+    <button class="submit-btn" onclick="submitForm()">✅ 確認同意並送出</button>
+    <div id="submitMsg" style="display:none; margin-top:14px; text-align:center; font-size:13px; font-weight:700;"></div>
   </div>
 
   <div class="footer">
@@ -390,51 +375,16 @@ function drawWatermark() {
     ctx.restore();
   }
 }
-// 手寫簽名
-const sigCanvas = document.getElementById('sigCanvas');
-const sigCtx = sigCanvas.getContext('2d');
-let drawing = false;
-
-function resizeSig() {
-  const wrap = sigCanvas.parentElement;
-  sigCanvas.width = wrap.offsetWidth;
-  sigCanvas.height = 140;
-  sigCtx.strokeStyle = '#5a3818';
-  sigCtx.lineWidth = 2.5;
-  sigCtx.lineCap = 'round';
-  sigCtx.lineJoin = 'round';
-}
-
-function getPos(e) {
-  const r = sigCanvas.getBoundingClientRect();
-  const src = e.touches ? e.touches[0] : e;
-  return { x: src.clientX - r.left, y: src.clientY - r.top };
-}
-
-sigCanvas.addEventListener('mousedown',  e => { drawing = true; sigCtx.beginPath(); const p = getPos(e); sigCtx.moveTo(p.x, p.y); });
-sigCanvas.addEventListener('mousemove',  e => { if (!drawing) return; const p = getPos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); });
-sigCanvas.addEventListener('mouseup',    () => drawing = false);
-sigCanvas.addEventListener('mouseleave', () => drawing = false);
-sigCanvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; sigCtx.beginPath(); const p = getPos(e); sigCtx.moveTo(p.x, p.y); }, { passive: false });
-sigCanvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); sigCtx.lineTo(p.x, p.y); sigCtx.stroke(); sigCtx.beginPath(); sigCtx.moveTo(p.x, p.y); }, { passive: false });
-sigCanvas.addEventListener('touchend',   () => drawing = false);
-
-function clearSig() { sigCtx.clearRect(0, 0, sigCanvas.width, sigCanvas.height); }
-
 async function submitForm() {
-  const date = document.getElementById('signDate').value;
-  const sigCanvas = document.getElementById('sigCanvas');
-  const isEmpty = !sigCanvas.getContext('2d')
-    .getImageData(0, 0, sigCanvas.width, sigCanvas.height)
-    .data.some(x => x !== 0);
+  const name  = document.getElementById('signName').value.trim();
+  const phone = document.getElementById('signPhone').value.trim();
+  const date  = document.getElementById('signDate').value.trim();
+  const agree = document.getElementById('agreeCheck').checked;
 
-  if (!date) { alert('請填寫日期！'); return; }
-  if (isEmpty) { alert('請先簽名！'); return; }
-
-  const TOKEN = 'tkzqlx+erMpQwg21AiUOL+fZvJtXHf/pjV0NqvHuwi/dZ4ws0hL2k7CJdVWE9CU9q+BVyWFck+nEHE9EvOXunXhp2GntBOQ9ukf8iE8UnhzLfN8nM78IeifLtTP34iwmP/RXoFxEcs5+GR+7XrW0GwdB04t89/1O/w1cDnyilFU=';
-  const USER_ID = 'U220888fc8aae5781571b9c1f9e2a18ac';
-
-  const msg = `✍️ 購票規則同意通知\n━━━━━━━━━━━━━\n📅 日期：${date}\n✅ 已手寫簽名確認\n本人已閱讀並同意所有購票規則`;
+  if (!name)  { alert('請填寫姓名！'); return; }
+  if (!phone) { alert('請填寫手機號碼！'); return; }
+  if (!date)  { alert('請填寫日期！'); return; }
+  if (!agree) { alert('請勾選同意購票規則！'); return; }
 
   const btn = document.querySelector('.submit-btn');
   btn.textContent = '傳送中...';
@@ -444,7 +394,7 @@ async function submitForm() {
     const res = await fetch('https://ticket-api-kohl.vercel.app/api/notify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ date })
+      body: JSON.stringify({ name, phone, date })
     });
 
     const msgEl = document.getElementById('submitMsg');
@@ -457,7 +407,7 @@ async function submitForm() {
       const err = await res.json();
       msgEl.textContent = `⚠️ 送出失敗：${err.message}`;
       msgEl.style.color = '#c84030';
-      btn.textContent = '✅ 確認送出';
+      btn.textContent = '✅ 確認同意並送出';
       btn.disabled = false;
     }
   } catch(e) {
@@ -465,13 +415,13 @@ async function submitForm() {
     msgEl.style.display = 'block';
     msgEl.textContent = '⚠️ 網路錯誤，請稍後再試';
     msgEl.style.color = '#c84030';
-    btn.textContent = '✅ 確認送出';
+    btn.textContent = '✅ 確認同意並送出';
     btn.disabled = false;
   }
 }
 
-window.addEventListener('load', () => { drawWatermark(); resizeSig(); });
-window.addEventListener('resize', () => { drawWatermark(); resizeSig(); });
+window.addEventListener('load', drawWatermark);
+window.addEventListener('resize', drawWatermark);
 </script>
 </body>
 </html>
