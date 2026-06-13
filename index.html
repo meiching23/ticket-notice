@@ -146,6 +146,36 @@
   .no-sell-tag { background:#fff0e8; border:1.5px solid #e8b090; color:#a03020; font-size:12.5px; font-weight:700; padding:6px 14px; border-radius:20px; display:flex; align-items:center; gap:5px; }
   .no-sell-tag::before { content:'🚫'; font-size:12px; }
 
+  /* Concept box */
+  .concept-box {
+    margin-top: 14px;
+    background: #fff8ee;
+    border: 1.5px solid #e8c898;
+    border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .concept-title {
+    font-size: 13px; font-weight: 800;
+    color: #7a4a18; letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .concept-steps { display: flex; flex-direction: column; gap: 0; }
+  .concept-step {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e8d0a8;
+  }
+  .step-num {
+    min-width: 26px; height: 26px;
+    background: #c87830; color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .step-text { font-size: 12.5px; color: #5a3818; line-height: 1.7; }
+  .step-text strong { color: #3a2008; }
+
   /* Divider */
   .divider { height:1px; background:linear-gradient(to right,transparent,#d8c0a0,transparent); margin:4px 0 26px; }
 
@@ -268,6 +298,28 @@
         </div>
       </div>
       <div class="alert-box alert-cream"><div class="alert-icon">⚠️</div><div><strong>促銷票開票時間：</strong>出發前約 2 週，熱門 / 連假時段可能縮短至出發前 3–5 天。建議行程保持彈性，拿到電子機票後再安排接送與保險。</div></div>
+
+      <div class="concept-box">
+        <div class="concept-title">💡 促銷票是什麼概念？</div>
+        <div class="concept-steps">
+          <div class="concept-step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>先付款、先保票</strong><br>看到促銷方案後付款，票位立即保留給你</div>
+          </div>
+          <div class="concept-step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>日期彈性選</strong><br>付款後不需馬上定日期，確定後再告知我們</div>
+          </div>
+          <div class="concept-step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>注意兌換日期 &amp; 票券期限</strong><br>每月將公告不收單日期，促銷票有使用期限，請依公告安排行程，逾期視為放棄</div>
+          </div>
+          <div class="concept-step" style="border-bottom:none; padding-bottom:0;">
+            <div class="step-num">4</div>
+            <div class="step-text"><strong>每檔獨立、額滿為止</strong><br>每次促銷方案價格不同，搶到就是賺到！</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="divider"></div>
 
