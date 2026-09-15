@@ -2,253 +2,291 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>購票須知 — 奶油版</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>購票須知 — 荷包輕盈旅行研究室</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-  * { margin:0; padding:0; box-sizing:border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
 
-  body {
-    font-family: 'Noto Sans TC', sans-serif;
-    background: #ede5d8;
-    display: flex;
-    justify-content: center;
-    padding: 40px 20px;
-  }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { overflow-x: hidden; }
 
-  .card {
-    background: #fdf8f0;
-    width: 100%;
-    max-width: 620px;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 24px 70px rgba(120,80,30,0.13), 0 2px 10px rgba(0,0,0,0.05);
-    position: relative;
-  }
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #ede5d8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 20px 16px 40px;
+  overflow-x: hidden;
+}
 
-  #wm {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
+.card {
+  width: 100%;
+  max-width: 600px;
+  background: #fdf8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(120,80,30,0.15);
+  position: relative;
+}
 
-  .header, .body, .footer { position: relative; z-index: 1; }
+#wm {
+  position: absolute; top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none; z-index:0;
+}
 
-  /* Header — 純焦糖奶油 */
-  .header {
-    background: #c8823a;
-    padding: 38px 40px 30px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, rgba(255,220,150,0.25) 0%, transparent 70%);
-  }
-  .header::after {
-    content: '🧳';
-    position: absolute;
-    right: 28px; top: 50%;
-    transform: translateY(-50%);
-    font-size: 90px;
-    opacity: 0.13;
-    pointer-events: none;
-  }
-  .header-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; position:relative; }
-  .header-badge {
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.38);
-    color: #fff8ee;
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 2.5px; padding: 4px 13px; border-radius: 20px;
-  }
-  .brand-tag { color: rgba(255,248,238,0.65); font-size: 10px; font-weight:500; letter-spacing:0.5px; text-align:right; line-height:1.6; }
-  .header h1 {
-    color: #fff8ee;
-    font-size: 34px; font-weight: 900;
-    letter-spacing: 5px; line-height: 1.2;
-    text-shadow: 0 2px 16px rgba(100,50,0,0.25);
-    position: relative;
-  }
-  .header h1 em { color: #ffedc0; font-style: normal; }
-  .header-sub {
-    margin-top: 10px; position: relative;
-    color: rgba(255,248,238,0.6);
-    font-size: 11.5px; letter-spacing: 1px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .header-sub::before { content:''; width:20px; height:1.5px; background:rgba(255,255,255,0.4); display:inline-block; }
+/* ── Header ── */
+.header {
+  background: #c8823a;
+  padding: 28px 24px 22px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(255,220,150,0.2) 0%, transparent 70%);
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  position: relative;
+  gap: 8px;
+}
+.header-badge {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.38);
+  color: #fff8ee;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 2px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.brand-tag {
+  color: rgba(255,248,238,0.7);
+  font-size: 9px;
+  font-weight: 600;
+  text-align: right;
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+.brand-tag strong { font-size: 11px; display: block; }
+.header h1 {
+  color: #fff8ee;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1.2;
+  position: relative;
+}
+.header h1 em { color: #ffedc0; font-style: normal; }
+.header-sub {
+  margin-top: 8px;
+  color: rgba(255,248,238,0.6);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: flex; align-items: center; gap: 6px;
+}
+.header-sub::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: rgba(255,255,255,0.4);
+  display: inline-block; flex-shrink: 0;
+}
 
-  /* Body */
-  .body { padding: 32px 40px; }
-  .section { margin-bottom: 28px; }
-  .section-title {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 16px; padding-bottom: 10px;
-    border-bottom: 2px solid #e8d8c0;
-  }
-  .section-icon {
-    width: 34px; height: 34px; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-  }
-  .si-a { background: #fce8cc; }
-  .si-b { background: #f5e0c8; }
-  .si-c { background: #fdebd8; }
-  .si-d { background: #f0dcc8; }
-  .section-title h2 { font-size: 15px; font-weight: 800; color: #7a4a18; letter-spacing: 1.5px; }
+/* ── Body ── */
+.body { padding: 24px 20px; position: relative; z-index: 1; }
+.section { margin-bottom: 24px; }
+.section-title {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 2px solid #e8d8c0;
+}
+.section-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
+}
+.si-a { background: #fce8cc; }
+.si-b { background: #f5e0c8; }
+.si-c { background: #fdebd8; }
+.si-d { background: #f0dcc8; }
+.section-title h2 { font-size: 14px; font-weight: 800; color: #7a4a18; letter-spacing: 1px; }
 
-  /* Ticket Cards */
-  .ticket-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:12px; }
-  .ticket-card { border-radius:16px; padding:18px; }
-  .ticket-card.promo    { background:#fff8ee; border:1.5px solid #e8c898; }
-  .ticket-card.original { background:#fdf2e4; border:1.5px solid #d4a870; }
-  .ticket-type-label { font-size:13.5px; font-weight:800; display:flex; align-items:center; gap:7px; margin-bottom:12px; }
-  .ticket-card.promo .ticket-type-label    { color: #a05818; }
-  .ticket-card.original .ticket-type-label { color: #7a3a10; }
-  .badge { font-size:9.5px; font-weight:700; padding:2px 8px; border-radius:10px; }
-  .badge-a { background:#c87830; color:#fff; }
-  .badge-b { background:#8a4818; color:#fff; }
-  .pros-cons { font-size:12px; line-height:2; color:#6a4820; margin-bottom:10px; }
-  .pro::before { content:'✓ '; color:#a07030; font-weight:700; }
-  .con::before { content:'✗ '; color:#c05030; font-weight:700; }
-  .who-section { border-top:1.5px dashed #d8b888; padding-top:10px; }
-  .who-label { font-size:9.5px; font-weight:800; letter-spacing:2px; margin-bottom:5px; color:#9a6030; }
-  .who-item { font-size:11.5px; color:#6a4820; line-height:1.9; display:flex; align-items:center; gap:5px; }
-  .who-item::before { content:'›'; font-weight:700; opacity:0.5; }
+/* ── Ticket Cards ── */
+.ticket-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ticket-card { border-radius: 14px; padding: 16px; }
+.ticket-card.promo { background: #fff8ee; border: 1.5px solid #e8c898; }
+.ticket-card.original { background: #fdf2e4; border: 1.5px solid #d4a870; }
+.ticket-type-label {
+  font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; gap: 6px; margin-bottom: 10px;
+}
+.ticket-card.promo .ticket-type-label { color: #a05018; }
+.ticket-card.original .ticket-type-label { color: #7a3a10; }
+.badge { font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+.badge-a { background: #c87830; color: #fff; }
+.badge-b { background: #8a4818; color: #fff; }
+.pros-cons { font-size: 12px; line-height: 2; color: #6a4820; margin-bottom: 10px; }
+.pro::before { content: '✓ '; color: #a07030; font-weight: 700; }
+.con::before { content: '✗ '; color: #c05030; font-weight: 700; }
+.who-section { border-top: 1.5px dashed #d8b888; padding-top: 10px; }
+.who-label { font-size: 9px; font-weight: 800; letter-spacing: 2px; margin-bottom: 5px; color: #9a6030; }
+.who-item { font-size: 11px; color: #6a4820; line-height: 1.9; display:flex; align-items:center; gap:5px; }
+.who-item::before { content: '›'; font-weight: 700; opacity: 0.5; }
 
-  /* Alert */
-  .alert-box { border-radius:13px; padding:13px 16px; font-size:12.5px; line-height:1.75; margin-top:12px; display:flex; gap:10px; align-items:flex-start; }
-  .alert-cream { background:#fef6e6; border:1.5px solid #ddb870; border-left:4px solid #c8903a; color:#7a4a10; }
-  .alert-cream strong { color:#a06018; }
-  .alert-icon { font-size:15px; margin-top:1px; flex-shrink:0; }
+/* ── Alert ── */
+.alert-box {
+  border-radius: 12px; padding: 12px 14px;
+  font-size: 12px; line-height: 1.75;
+  margin-top: 12px;
+  display: flex; gap: 8px; align-items: flex-start;
+}
+.alert-cream {
+  background: #fef6e6;
+  border: 1.5px solid #ddb870;
+  border-left: 4px solid #c8903a;
+  color: #7a4a10;
+}
+.alert-cream strong { color: #a06018; }
+.alert-icon { font-size: 14px; margin-top: 1px; flex-shrink: 0; }
 
-  /* Rules */
-  .rule-list { list-style:none; }
-  .rule-list li { display:flex; gap:12px; font-size:13px; color:#5a3818; line-height:1.75; padding:10px 0; border-bottom:1px solid #e8d8c0; align-items:flex-start; }
-  .rule-list li:last-child { border-bottom:none; padding-bottom:0; }
-  .rule-list li strong { color:#3a2008; }
-  .rule-num { min-width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; margin-top:1px; }
-  .rn-main { background:#c87830; color:#fff; }
-  .rn-warn { background:#c84830; color:#fff; }
+/* ── Concept Box ── */
+.concept-box {
+  margin-top: 14px;
+  background: #fff8ee;
+  border: 1.5px solid #e8c898;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.concept-title { font-size: 12px; font-weight: 800; color: #7a4a18; margin-bottom: 12px; }
+.concept-step {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 8px 0; border-bottom: 1px dashed #e8d0a8;
+}
+.concept-step:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num {
+  min-width: 22px; height: 22px;
+  background: #c87830; color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+}
+.step-text { font-size: 12px; color: #5a3818; line-height: 1.7; }
+.step-text strong { color: #3a2008; }
 
-  /* Info */
-  .info-list { display:flex; flex-direction:column; gap:9px; }
-  .info-item { background:#fef0dc; border-radius:12px; padding:13px 16px; display:flex; gap:11px; align-items:flex-start; font-size:12.5px; color:#5a3818; line-height:1.65; border-left:3px solid #d4a060; }
-  .info-item strong { color:#7a4018; }
-  .info-dot { width:7px; height:7px; background:#c87830; border-radius:50%; margin-top:5px; flex-shrink:0; }
+/* ── Rules ── */
+.rule-list { list-style: none; }
+.rule-list li {
+  display: flex; gap: 10px;
+  font-size: 12.5px; color: #3a2010;
+  line-height: 1.75; padding: 9px 0;
+  border-bottom: 1px solid #ede4d8;
+  align-items: flex-start;
+}
+.rule-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.rule-list li strong { color: #3a2008; }
+.rule-num {
+  min-width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 800; flex-shrink: 0; margin-top: 2px;
+}
+.rn-main { background: #c87830; color: #fff; }
+.rn-warn { background: #c84030; color: #fff; }
 
-  /* No-sell */
-  .no-sell-row { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:12px; }
-  .no-sell-tag { background:#fff0e8; border:1.5px solid #e8b090; color:#a03020; font-size:12.5px; font-weight:700; padding:6px 14px; border-radius:20px; display:flex; align-items:center; gap:5px; }
-  .no-sell-tag::before { content:'🚫'; font-size:12px; }
+/* ── Info ── */
+.info-list { display: flex; flex-direction: column; gap: 8px; }
+.info-item {
+  background: #fef0dc; border-radius: 10px;
+  padding: 12px 14px; display: flex; gap: 10px;
+  font-size: 12px; color: #5a3818; line-height: 1.65;
+  border-left: 3px solid #d4a060;
+}
+.info-dot { width:6px; height:6px; background:#c87830; border-radius:50%; margin-top:5px; flex-shrink:0; }
 
-  /* Concept box */
-  .concept-box {
-    margin-top: 14px;
-    background: #fff8ee;
-    border: 1.5px solid #e8c898;
-    border-radius: 14px;
-    padding: 16px 18px;
-  }
-  .concept-title {
-    font-size: 13px; font-weight: 800;
-    color: #7a4a18; letter-spacing: 1px;
-    margin-bottom: 14px;
-  }
-  .concept-steps { display: flex; flex-direction: column; gap: 0; }
-  .concept-step {
-    display: flex; gap: 12px; align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px dashed #e8d0a8;
-  }
-  .step-num {
-    min-width: 26px; height: 26px;
-    background: #c87830; color: #fff;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 800;
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .step-text { font-size: 12.5px; color: #5a3818; line-height: 1.7; }
-  .step-text strong { color: #3a2008; }
+/* ── No-sell ── */
+.no-sell-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.no-sell-tag {
+  background: #fff0ed; border: 1.5px solid #e8b090;
+  color: #a83020; font-size: 12px; font-weight: 700;
+  padding: 5px 12px; border-radius: 20px;
+  display: flex; align-items: center; gap: 4px;
+}
+.no-sell-tag::before { content: '🚫'; font-size: 11px; }
 
-  /* Divider */
-  .divider { height:1px; background:linear-gradient(to right,transparent,#d8c0a0,transparent); margin:4px 0 26px; }
+/* ── Divider ── */
+.divider { height: 1px; background: linear-gradient(to right, transparent, #d8c0a0, transparent); margin: 4px 0 22px; }
 
-  /* Signature */
-  .sign-section {
-    margin: 0 40px 32px;
-    position: relative; z-index: 1;
-    background: #fef6e6;
-    border: 1.5px solid #ddb870;
-    border-radius: 16px;
-    padding: 20px 24px;
-  }
-  .sign-title {
-    font-size: 13px; font-weight: 800;
-    color: #7a4a18; letter-spacing: 1px;
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .sign-title::before { content:'📋'; font-size:15px; }
-  .sign-agree {
-    margin-bottom: 16px;
-    font-size: 12.5px; color: #7a4a18;
-    line-height: 1.6;
-    padding: 10px 12px;
-    background: rgba(200,130,60,0.06);
-    border-radius: 8px;
-    border-left: 3px solid #c87830;
-  }
-  .sign-fields { display: flex; flex-direction: column; gap: 16px; margin-bottom: 18px; }
-  .sign-field { display: flex; flex-direction: column; gap: 6px; }
-  .sign-label { font-size: 11px; font-weight: 700; color: #9a6030; letter-spacing: 1px; }
-  .sign-input {
-    height: 42px;
-    border: none;
-    border-bottom: 1.5px solid #c8a070;
-    background: transparent;
-    font-size: 14px; color: #5a3818;
-    font-family: 'Noto Sans TC', sans-serif;
-    outline: none;
-    padding: 0 4px;
-    width: 100%;
-  }
-  .sign-input:focus { border-bottom-color: #c87830; }
-  .sign-input::placeholder { color: #c8a888; font-size: 13px; }
-  .checkbox-row {
-    display: flex; align-items: flex-start; gap: 10px;
-    margin-bottom: 18px; cursor: pointer;
-  }
-  .checkbox-row input[type="checkbox"] {
-    width: 20px; height: 20px;
-    margin-top: 1px; flex-shrink: 0;
-    accent-color: #c87830; cursor: pointer;
-  }
-  .checkbox-label { font-size: 13px; color: #7a4a18; line-height: 1.65; }
-  .checkbox-label strong { color: #5a3010; }
-  .submit-btn {
-    display: block; width: 100%;
-    padding: 14px;
-    background: #c87830; color: #fff8ee;
-    font-size: 15px; font-weight: 800;
-    letter-spacing: 2px;
-    border: none; border-radius: 12px;
-    cursor: pointer;
-    font-family: 'Noto Sans TC', sans-serif;
-    transition: background 0.2s;
-  }
-  .submit-btn:hover { background: #a06020; }
-  .submit-btn:disabled { background: #d4b080; cursor: not-allowed; }
+/* ── Sign Section ── */
+.sign-section {
+  margin: 0 20px 28px;
+  position: relative; z-index: 1;
+  background: #fef6e6;
+  border: 1.5px solid #ddb870;
+  border-radius: 14px;
+  padding: 18px;
+}
+.sign-title {
+  font-size: 13px; font-weight: 800; color: #7a4a18;
+  margin-bottom: 14px; display: flex; align-items: center; gap: 6px;
+}
+.sign-title::before { content: '📋'; font-size: 14px; }
+.sign-agree {
+  margin-bottom: 14px; font-size: 12px; color: #7a4a18;
+  line-height: 1.7; padding: 10px 12px;
+  background: rgba(200,130,60,0.06);
+  border-radius: 8px; border-left: 3px solid #c87830;
+}
+.sign-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 16px; }
+.sign-field { display: flex; flex-direction: column; gap: 5px; }
+.sign-label { font-size: 10px; font-weight: 700; color: #9a6030; letter-spacing: 1px; }
+.sign-input {
+  height: 42px; border: none;
+  border-bottom: 1.5px solid #c8a070;
+  background: transparent;
+  font-size: 15px; color: #5a3818;
+  font-family: 'Noto Sans TC', sans-serif;
+  outline: none; padding: 0 4px; width: 100%;
+}
+.sign-input:focus { border-bottom-color: #c87830; }
+.sign-input::placeholder { color: #c8a888; font-size: 13px; }
+.checkbox-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+.checkbox-row input[type="checkbox"] {
+  width: 20px; height: 20px; margin-top: 2px; flex-shrink: 0;
+  accent-color: #c87830; cursor: pointer;
+}
+.checkbox-label { font-size: 12.5px; color: #7a4a18; line-height: 1.65; }
+.checkbox-label strong { color: #5a3010; }
+.submit-btn {
+  display: block; width: 100%; padding: 14px;
+  background: #c87830; color: #fff8ee;
+  font-size: 15px; font-weight: 800; letter-spacing: 2px;
+  border: none; border-radius: 12px; cursor: pointer;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.submit-btn:disabled { background: #d4b080; cursor: not-allowed; }
 
-  /* Footer */
-  .footer { background:#c87830; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; }
-  .footer-brand { color:#fff8ee; font-size:13px; font-weight:700; letter-spacing:1px; }
-  .footer-note  { color:rgba(255,248,238,0.55); font-size:10px; text-align:right; line-height:1.7; }
+/* ── Footer ── */
+.footer {
+  background: #c87830; padding: 18px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: relative; z-index: 1;
+}
+.footer-brand { color: #fff8ee; font-size: 12px; font-weight: 700; }
+.footer-sub { color: rgba(255,248,238,0.5); font-size: 9px; margin-top: 2px; }
+.footer-note { color: rgba(255,248,238,0.55); font-size: 10px; text-align: right; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -257,14 +295,15 @@
 
   <div class="header">
     <div class="header-top">
-      <div class="header-badge">✈ &nbsp;TICKET GUIDE</div>
-      <div class="brand-tag"><span style="font-size:16px; font-weight:700;">荷包輕盈旅行研究室</span><br>FlyLight Travel Lab 🧳</div>
+      <div class="header-badge">✈ TICKET GUIDE</div>
+      <div class="brand-tag"><strong>荷包輕盈旅行研究室</strong>FlyLight Travel Lab 🧳</div>
     </div>
-    <h1>購票須知<br><em>&amp; 說明</em></h1>
-    <div class="header-sub">FlyLight Travel Lab · 購票前請詳細閱讀以下規則，謝謝配合</div>
+    <h1>購票須知<br><em>& 說明</em></h1>
+    <div class="header-sub">購票前請詳細閱讀以下規則，謝謝配合</div>
   </div>
 
   <div class="body">
+
     <div class="section">
       <div class="section-title"><div class="section-icon si-a">🎫</div><h2>票種說明</h2></div>
       <div class="ticket-grid">
@@ -274,6 +313,7 @@
             <div class="pro">便宜、可彈性換日</div>
             <div class="con">航班不保證</div>
             <div class="con">滿位需更換航班</div>
+            <div class="con">不接受連假出發日期</div>
           </div>
           <div class="who-section">
             <div class="who-label">✦ 適合對象</div>
@@ -285,8 +325,9 @@
         <div class="ticket-card original">
           <div class="ticket-type-label">原價票 <span class="badge badge-b">保障</span></div>
           <div class="pros-cons">
-            <div class="pro">機位保證、出票快（預計 10–15 天）</div>
+            <div class="pro">機位保證、出票快</div>
             <div class="pro">官網 85–9 折優惠</div>
+            <div class="pro">班機不變動保障</div>
             <div class="con">不可換日、費較高</div>
           </div>
           <div class="who-section">
@@ -297,29 +338,25 @@
           </div>
         </div>
       </div>
-      <div class="alert-box alert-cream"><div class="alert-icon">⚠️</div><div><strong>促銷票開票時間：</strong>出發前約 2 週，熱門 / 連假時段可能縮短至出發前 3–5 天，忙碌時段最晚可能在<strong>出發日前一天下午 18:00 前</strong>提供。建議行程保持彈性，拿到電子機票後再安排接送與保險。</div></div>
-
+      <div class="alert-box alert-cream"><div class="alert-icon">⚠️</div><div><strong>促銷票開票時間：</strong>出發前約 2 週，熱門 / 連假時段可能縮短至出發前 3–5 天，最晚在<strong>出發前一天 18:00 前</strong>提供。建議行程保持彈性，拿到電子機票後再安排接送與保險。</div></div>
       <div class="concept-box">
         <div class="concept-title">💡 促銷票是什麼概念？</div>
-        <div class="concept-steps">
-          <div class="concept-step">
-            <div class="step-num">1</div>
-            <div class="step-text"><strong>先付款、先保票</strong><br>看到促銷方案後付款，票位立即保留給你</div>
-          </div>
-          <div class="concept-step">
-            <div class="step-num">2</div>
-            <div class="step-text"><strong>日期彈性選</strong><br>付款後不需馬上定日期，確定後再告知我們</div>
-          </div>
-          <div class="concept-step">
-            <div class="step-num">3</div>
-            <div class="step-text"><strong>注意兌換日期 &amp; 票券期限</strong><br>每月將公告不收單日期，促銷票有使用期限，請依公告安排行程，逾期視為放棄</div>
-          </div>
-          <div class="concept-step" style="border-bottom:none; padding-bottom:0;">
-            <div class="step-num">4</div>
-            <div class="step-text"><strong>每檔獨立、額滿為止</strong><br>每次促銷方案價格不同，搶到就是賺到！</div>
-          </div>
-        </div>
+        <div class="concept-step"><div class="step-num">1</div><div class="step-text"><strong>先付款、先保票</strong><br>看到促銷方案後付款，票位立即保留給你</div></div>
+        <div class="concept-step"><div class="step-num">2</div><div class="step-text"><strong>日期彈性選</strong><br>付款後不需馬上定日期，確定後再告知我們</div></div>
+        <div class="concept-step"><div class="step-num">3</div><div class="step-text"><strong>注意兌換日期 & 票券期限</strong><br>每月將公告不收單日期，促銷票有使用期限，逾期視為放棄</div></div>
+        <div class="concept-step" style="border-bottom:none;padding-bottom:0;"><div class="step-num">4</div><div class="step-text"><strong>每檔獨立、額滿為止</strong><br>每次促銷方案價格不同，搶到就是賺到！</div></div>
       </div>
+    </div>
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title"><div class="section-icon si-b">📌</div><h2>票種補充說明</h2></div>
+      <ul class="rule-list">
+        <li><div class="rule-num rn-main">促</div><div>促銷票<strong>不接受連假出發日期</strong>（含春節、清明、端午、中秋、國慶連假等），如需連假出發請選擇原價票。</div></li>
+        <li><div class="rule-num rn-main">促</div><div><strong>優惠票的本質是以低價換取彈性空間。</strong>變動性大是此票種的特性，遇到客滿時<strong>必須接受班機變動</strong>，熱門時段尤其明顯，時間可能非常不理想。能接受這個價格，就請接受它的不便性。我們團隊會盡全力為您安排最好的替代班機。</div></li>
+        <li><div class="rule-num rn-main">原</div><div>原價票開票時間約 <strong>15–30 個工作天</strong>，開票過程中保障班機不變動。</div></li>
+        <li><div class="rule-num rn-main">原</div><div>若開票過程中遇班機突然客滿，我們將提供以下方案：<br>① <strong>全額退費</strong><br>② 接受備案，協助查詢其他可飛航班</div></li>
+      </ul>
     </div>
     <div class="divider"></div>
 
@@ -346,21 +383,22 @@
     <div class="section">
       <div class="section-title"><div class="section-icon si-c">⚠️</div><h2>特別注意</h2></div>
       <ul class="rule-list">
+        <li><div class="rule-num rn-warn">!</div><div>優惠票<strong>無法指定早班或晚班</strong>，僅能提供許願航班作為參考。當機位客滿時必須配合班機調整，即使原本是早班，當天若僅剩下午航班，亦只能接受下午出發，請務必保持彈性。</div></li>
+        <li><div class="rule-num rn-warn">!</div><div><strong>行程安排建議從抵達次日開始</strong>，避免因班機時間調整影響當天活動或接送安排。</div></li>
         <li><div class="rule-num rn-warn">!</div><div>機票可能有<strong>超賣、取消、時間異動、更換機型</strong>等突發狀況，官網自購也有同樣風險。與我們訂的差別在於：<strong>有人協助與航空公司溝通、維護您的權益</strong>。</div></li>
-        <li><div class="rule-num rn-warn">!</div><div>促銷票如遇班機更換，我們將協助安排合適航班，<strong>請勿為難工作人員</strong>。</div></li>
+        <li><div class="rule-num rn-warn">!</div><div>促銷票如遇班機更換，我們將協助安排合適航班，<strong>請勿為難工作人員</strong>。旺季期間可能遇到<strong>滿機換班機甚至需要轉機</strong>的情況，我們會盡量安排最適合的航班。</div></li>
         <li><div class="rule-num rn-warn">!</div><div>喊完即視為保留，取消則<strong>取消日後購買促銷票資格</strong>，請確認後再回覆。</div></li>
         <li><div class="rule-num rn-warn">!</div><div>特殊情況（生病、緊急事件等）請主動告知，將依事發狀況評估是否免費取消或退票。</div></li>
-        <li><div class="rule-num rn-warn">!</div><div>不接受任何<strong>無理、沒禮貌、沒耐心</strong>及煽動其他旅客情緒的言論。如說話不尊重人，也不尊重自己，將會<strong>取消購票資格</strong>，請自重。</div></li>
+        <li><div class="rule-num rn-warn">!</div><div>不接受任何<strong>無理、沒禮貌、沒耐心</strong>及煽動其他旅客情緒的言論，將會<strong>取消購票資格</strong>，請自重。</div></li>
       </ul>
     </div>
     <div class="divider"></div>
 
-    <!-- 介紹規定 -->
     <div class="section">
       <div class="section-title"><div class="section-icon si-b">🤝</div><h2>介紹規定</h2></div>
       <ul class="rule-list">
-        <li><div class="rule-num rn-main">1</div><div>介紹親朋好友時，請主動告知我們一聲，並同時傳送購票規定給對方。完成後務必提供<strong>好友姓名</strong>給我們核實，同時請親友加入好友時說明是您介紹的。我們將核實後加入好友並發布資訊。<br><span style="color:#9a6030; font-size:11.5px;">EX：您好我是 xx 莉介紹的。</span></div></li>
-        <li><div class="rule-num rn-main">2</div><div>不可將任何<strong>活動文案直接轉發或截圖</strong>給非我們的顧客直接看，群組也不行。如邀請朋友請用詢問的方式，不可外散任何活動內容，所有文案及活動內容僅提供我們自家顧客購買及觀看。<br><strong style="color:#c84030;">違規者將取消您的購票資格。</strong></div></li>
+        <li><div class="rule-num rn-main">1</div><div>介紹親朋好友時，請主動告知我們並傳送購票規定給對方，完成後提供<strong>好友姓名</strong>給我們核實。親友加入時請說明是您介紹的。<br><span style="color:#9a6030;font-size:11px;">EX：您好我是 xx 莉介紹的。</span></div></li>
+        <li><div class="rule-num rn-main">2</div><div>不可將任何<strong>活動文案直接轉發或截圖</strong>給非我們的顧客，群組也不行。邀請朋友請用詢問方式，<strong style="color:#c84030;">違規者取消購票資格</strong>。</div></li>
       </ul>
       <div class="alert-box alert-cream" style="margin-top:12px;"><div class="alert-icon">⚠️</div><div>若好友不清楚所有購票規定，未來也會<strong>取消您的購票資格</strong>，非常重要請認真看待！</div></div>
     </div>
@@ -376,14 +414,12 @@
       </div>
       <div class="alert-box alert-cream"><div class="alert-icon">⚠️</div><div>軍警人員出境需<strong>提早申請電子機票</strong>，基於二週開票限制無法配合處理。情緒不穩定者及無理取鬧者<strong>無法接受任何意外變動</strong>，且影響其他旅客權益，故一律不受理。</div></div>
     </div>
+
   </div>
 
-  <!-- 同意書區 -->
   <div class="sign-section">
     <div class="sign-title">購票同意書</div>
-    <div class="sign-agree">
-      請填寫以下資料，代表本人已詳細閱讀並完全同意上述所有購票規則，包含促銷票特性、不可取消條款、開票時間限制及不販售對象說明。
-    </div>
+    <div class="sign-agree">請填寫以下資料，代表本人已詳細閱讀並完全同意上述所有購票規則，包含促銷票特性、不可取消條款、開票時間限制及不販售對象說明。</div>
     <div class="sign-fields">
       <div class="sign-field">
         <div class="sign-label">姓名 NAME</div>
@@ -394,7 +430,7 @@
         <input class="sign-input" id="signPhone" type="tel" placeholder="09xxxxxxxx">
       </div>
       <div class="sign-field">
-        <div class="sign-label">日期 DATE</div>
+        <div class="sign-label">回簽日期 DATE</div>
         <input class="sign-input" id="signDate" type="text" placeholder="yyyy/mm/dd">
       </div>
     </div>
@@ -403,15 +439,15 @@
       <span class="checkbox-label">本人已詳細閱讀並完全同意以上所有<strong>購票規則與注意事項</strong>，並了解購票後不可取消及相關限制。</span>
     </label>
     <button class="submit-btn" onclick="submitForm()">✅ 確認同意並送出</button>
-    <div id="submitMsg" style="display:none; margin-top:14px; text-align:center; font-size:13px; font-weight:700;"></div>
+    <div id="submitMsg" style="display:none;margin-top:12px;text-align:center;font-size:13px;font-weight:700;"></div>
   </div>
 
   <div class="footer">
     <div>
       <div class="footer-brand">荷包輕盈旅行研究室 🧳</div>
-      <div style="color:rgba(255,248,238,0.5); font-size:10px; margin-top:3px; letter-spacing:1px;">FlyLight Travel Lab</div>
+      <div class="footer-sub">FlyLight Travel Lab</div>
     </div>
-    <div class="footer-note">購票即視為同意以上規則<br>請詳閱後再下單，謝謝配合</div>
+    <div class="footer-note">購票即視為同意以上規則<br>請詳閱後再下單</div>
   </div>
 </div>
 
@@ -421,50 +457,42 @@ function drawWatermark() {
   const canvas = document.getElementById('wm');
   const w = card.offsetWidth;
   const h = card.offsetHeight;
-  canvas.width = w;
-  canvas.height = h;
+  canvas.width = w; canvas.height = h;
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, w, h);
-
   const sections = 6;
   const blockH = h / sections;
-  const text = '荷包輕盈旅行研究室 🧳';
-  ctx.font = '900 22px "Noto Sans TC", sans-serif';
-  ctx.fillStyle = 'rgba(160,100,40,0.1)';
+  ctx.font = '900 18px "Noto Sans TC", sans-serif';
+  ctx.fillStyle = 'rgba(160,100,40,0.08)';
   ctx.textAlign = 'center';
-
   for (let i = 0; i < sections; i++) {
-    const cx = w / 2;
-    const cy = blockH * i + blockH / 2;
     ctx.save();
-    ctx.translate(cx, cy);
+    ctx.translate(w / 2, blockH * i + blockH / 2);
     ctx.rotate(-20 * Math.PI / 180);
-    ctx.fillText(text, 0, 0);
+    ctx.fillText('荷包輕盈旅行研究室 🧳', 0, 0);
     ctx.restore();
   }
 }
+window.addEventListener('load', drawWatermark);
+window.addEventListener('resize', drawWatermark);
+
 async function submitForm() {
-  const name  = document.getElementById('signName').value.trim();
+  const name = document.getElementById('signName').value.trim();
   const phone = document.getElementById('signPhone').value.trim();
-  const date  = document.getElementById('signDate').value.trim();
+  const date = document.getElementById('signDate').value.trim();
   const agree = document.getElementById('agreeCheck').checked;
-
-  if (!name)  { alert('請填寫姓名！'); return; }
+  if (!name) { alert('請填寫姓名！'); return; }
   if (!phone) { alert('請填寫手機號碼！'); return; }
-  if (!date)  { alert('請填寫日期！'); return; }
+  if (!date) { alert('請填寫日期！'); return; }
   if (!agree) { alert('請勾選同意購票規則！'); return; }
-
   const btn = document.querySelector('.submit-btn');
-  btn.textContent = '傳送中...';
-  btn.disabled = true;
-
+  btn.textContent = '傳送中...'; btn.disabled = true;
   try {
     const res = await fetch('https://ticket-api-kohl.vercel.app/api/notify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, date })
+      body: JSON.stringify({ name, phone, date, label: '回簽日期' })
     });
-
     const msgEl = document.getElementById('submitMsg');
     msgEl.style.display = 'block';
     if (res.ok) {
@@ -472,8 +500,7 @@ async function submitForm() {
       msgEl.style.color = '#5a8a30';
       btn.textContent = '已送出 ✅';
     } else {
-      const err = await res.json();
-      msgEl.textContent = `⚠️ 送出失敗：${err.message}`;
+      msgEl.textContent = '⚠️ 送出失敗，請稍後再試';
       msgEl.style.color = '#c84030';
       btn.textContent = '✅ 確認同意並送出';
       btn.disabled = false;
@@ -487,9 +514,6 @@ async function submitForm() {
     btn.disabled = false;
   }
 }
-
-window.addEventListener('load', drawWatermark);
-window.addEventListener('resize', drawWatermark);
 </script>
 </body>
 </html>
