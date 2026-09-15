@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<script>
+  const VERSION = '8';
+  const url = new URL(window.location.href);
+  if (url.searchParams.get('v') !== VERSION) {
+    url.searchParams.set('v', VERSION);
+    window.location.replace(url.toString());
+  }
+</script>
 <title>購票須知 — 荷包輕盈旅行研究室</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
